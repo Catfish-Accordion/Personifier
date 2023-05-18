@@ -42,10 +42,11 @@ module.exports.updateCseUser = (req, res) => {
         { new: true, runValidators: true }
     )
         .then(updatedUser => {
-            res.json({ user: updatedUser })
+            res.json({ cse: updatedUser })
         })
         .catch((err) => {
-            res.json({ message: `Something went wrong updating cse user ${req.params.id} : `, error: err })
+            // res.json({ message: `Something went wrong deleting cse user ${req.params.id} : `, error: err })
+            res.status(400).json(err)
         });}
  
 // DELETE : ONE CSE USER

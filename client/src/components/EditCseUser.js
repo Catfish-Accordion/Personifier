@@ -1,23 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Link, Navigate, Router, useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 
-const CreateCseUser = (props) => {
+
+const EditCseUser = (props) => {
     // const Navigate = useNavigate();
-    // const navigate = useNavigate();
-    const [cseUser, setCseUser] = useState({
-        firstName: "",
-        lastName: "",
-        slackName: "",
-        twilioEmail: "",
-        segmentEmail: "",
-        cseTeam: "",
-        workspaceSlug: "",
-        workspaceId: "",
-        preferredPronouns: "",
-        phoneNumber : ""
-    })
+    const navigate = useNavigate();
+    // setCse({...cse, [e.target.name]:e.target.value})
+    // const [cse, setCse] = useState({
+    //     firstName: "",
+    //     lastName: "",
+    //     slackName: "",
+    //     twilioEmail: "",
+    //     segmentEmail: "",
+    //     cseTeam: "",
+    //     workspaceSlug: "",
+    //     workspaceId: "",
+    //     preferredPronouns: "",
+    //     phoneNumber : ""
+    // })
+    const [cseUser, setCseUser] = useState({})
+    const {id} = useParams();
+    console.log(id)
+
     
     const [errors, setErrors] = useState({})
     
@@ -25,34 +31,34 @@ const CreateCseUser = (props) => {
         setCseUser({...cseUser, [e.target.name]:e.target.value})
     }
     
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/cseuser/${id}`)
+            .then((res) => {
+                console.log(res.data.cseuser);
+                setCseUser(res.data.cseuser);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
+    // NEED TO CHANGE
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/newcseuser', cseUser)
+        axios.put(`http://localhost:8000/api/deletecseuser/${id}`, cseUser)
             .then((res) => {
                 console.log(res);
-                // CLEAR OUT FORM DATA
-                setCseUser({firstName: "",
-                    lastName: "",
-                    slackName: "",
-                    twilioEmail: "",
-                    segmentEmail: "",
-                    cseTeam: "",
-                    workspaceSlug: "",
-                    workspaceId: "",
-                    preferredPronouns: "",
-                    phoneNumber : ""
-                })
-                Navigate('/');
+                navigate('/');
             })
             .catch((err) => {
                 console.log(err.response.data.errors);
                 setErrors(err.response.data.errors);
             })
     }
-    
 
     return(
-        <div>
+        <div >
+            <h2>Edit CSE User</h2>
             <form onSubmit={submitHandler}>
                 <div>
                     <label>First Name</label>
@@ -124,12 +130,10 @@ const CreateCseUser = (props) => {
                         errors.phoneNumber && (<p className='text-danger'>{errors.phoneNumber.message}</p>)
                     }
                 </div>
-                {/* <Link to={`/`}> */}
-                    <button>Submit</button>
-                {/* </Link> */}
+                <button>Save Changes</button>
             </form>
-        </div>
+       </div>
     )   
 }
 
-export default CreateCseUser;
+export default EditCseUser;

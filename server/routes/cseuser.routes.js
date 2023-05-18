@@ -2,8 +2,8 @@ const CseUserController = require('../controllers/cseuser.controller');
  
 module.exports = app => {
     app.get('/api/allcseusers', CseUserController.findAllCseUsers);
-    app.post('/api/newcseuser', CseUserController.createCseUser);
     app.get('/api/cseuser/:id', CseUserController.findCseUser);
+    app.post('/api/newcseuser', CseUserController.createCseUser);
     app.put('/api/cseuser/:id', CseUserController.updateCseUser);
     app.delete('/api/deletecseuser/:id', CseUserController.deleteCseUser);
 }

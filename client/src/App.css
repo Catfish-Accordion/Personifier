@@ -28,11 +28,17 @@ h1, div, h4 {
   color: white;
 }
 
-Link {
-  text-align: center;
-  color : purple;
+.cseUserCard {
+  padding: .25em;
+  margin: .25em;
 }
 
+#nav * {
+  margin: 1em;
+}
+
+
+/* 
 .App-link {
   color: #61dafb;
 }
@@ -44,4 +50,4 @@ Link {
   to {
     transform: rotate(360deg);
   }
-}
+} */
