@@ -19,7 +19,7 @@ module.exports = app => {
 //     "cseTeam": "Team-2 : (Connections 2, Cloud Mode, Server-Side, Engage)",
 //     "workspaceSlug": "liz-kane",
 //     "workspaceId": "1234567890",
-//     "preferredName" : "Liz",
+//     "preferredPronouns" : "she/her",
 //     "phoneNumber": "555-555-5555"
 // }
 

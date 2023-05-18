@@ -30,7 +30,7 @@ module.exports.createCseUser = (req, res) => {
             res.json({ newcesuser: newCseUser })
         })
         .catch((err) => {
-            res.json({ message: `Something went wrong creating cse user : `, error: err })
+            res.status(400).json(err)
         });}
  
 // UPDATE : ONE CSE USER

@@ -40,20 +40,17 @@ const CseUserSchema = new mongoose.Schema({
     },
     workspaceId: {
         type: String,
-        required: [false, "WorkspaceId is not required"],
-        minlength: [7, "WorkspaceId must be at least 7 characters long"]
+        required: [false, "WorkspaceId is not required"]
     },
-    preferredName: {
+    preferredPronouns: {
         type: String,
-        required: [false, "Preferred name is not required"],
-        minlength: [2, "Preferred name must be at least 2 characters long"]
+        required: [false, "Preferred pronouns is not required"]
     },
     phoneNumber : {
         type: String,
-        required: [false, "Phone number is not required"],
-        minlength: [10, "Phone number must be at least 10 characters long"]
+        required: [false, "Phone number is not required"]
     }
-});
+}, {timestamps:true});
  
 const CseUser = mongoose.model('CseUser', CseUserSchema);
  
