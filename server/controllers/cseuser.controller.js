@@ -14,7 +14,7 @@ module.exports.findAllCseUsers = (req, res) => {
  
 // READ : ONE CSE USER
 module.exports.findCseUser = (req, res) => {
-    console.log(req.params)
+    // console.log(req.params)
     CseUsers.findOne({ _id: req.params.id })
         .then(findOneCseUser => {
             res.json({ cseuser: findOneCseUser })
@@ -27,7 +27,7 @@ module.exports.findCseUser = (req, res) => {
 module.exports.createCseUser = (req, res) => {
     CseUsers.create(req.body)
         .then(newCseUser => {
-            res.json({ newcesuser: newCseUser })
+            res.json({ newcseuser: newCseUser })
         })
         .catch((err) => {
             res.status(400).json(err)
@@ -35,14 +35,14 @@ module.exports.createCseUser = (req, res) => {
  
 // UPDATE : ONE CSE USER
 module.exports.updateCseUser = (req, res) => {
-    console.log(req.params)
+    // console.log(req.params)
     CseUsers.findOneAndUpdate(
         { _id: req.params.id },
         req.body,
         { new: true, runValidators: true }
     )
         .then(updatedUser => {
-            res.json({ cse: updatedUser })
+            res.json({ cseuser: updatedUser })
         })
         .catch((err) => {
             // res.json({ message: `Something went wrong deleting cse user ${req.params.id} : `, error: err })

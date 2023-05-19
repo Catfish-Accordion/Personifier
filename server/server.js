@@ -11,5 +11,8 @@ app.use(express.json(), express.urlencoded({ extended: true }));
 
 const CseUserRoutes = require("./routes/cseuser.routes");
 CseUserRoutes(app);
+
+const UserRoutes = require("./routes/user.routes");
+UserRoutes(app);
     
 app.listen(8000, () => console.log("The server live and running on PORT 8000 :  http://localhost:8000/"));

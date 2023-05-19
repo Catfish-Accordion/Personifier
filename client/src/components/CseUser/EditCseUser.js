@@ -2,29 +2,25 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 
-
-
+// FRONT END : `http://localhost:8000/editCseUser/${cseUser._id}`
+// BACK END : http://localhost:8000/api/cseuser/${id}
 const EditCseUser = (props) => {
-    // const Navigate = useNavigate();
     const navigate = useNavigate();
-    // setCse({...cse, [e.target.name]:e.target.value})
-    // const [cse, setCse] = useState({
-    //     firstName: "",
-    //     lastName: "",
-    //     slackName: "",
-    //     twilioEmail: "",
-    //     segmentEmail: "",
-    //     cseTeam: "",
-    //     workspaceSlug: "",
-    //     workspaceId: "",
-    //     preferredPronouns: "",
-    //     phoneNumber : ""
-    // })
-    const [cseUser, setCseUser] = useState({})
     const {id} = useParams();
     console.log(id)
+    const [cseUser, setCseUser] = useState({})
+    console.log(cseUser, setCseUser)
+    // const [firstName, setFirstName] = useState();
+    // const [lastName, setLastName] = useState();
+    // const [slackName, setSlackName] = useState();
+    // const [twilioEmail, setTwilioEmail] = useState();
+    // const [segmentEmail, setSegmentEmail] = useState();
+    // const [cseTeam, SetCseTeam] = useState();
+    // const [workspaceSlug, setWorkspaceSlug] = useState();
+    // const [workspaceId, setWorkspaceId] = useState();
+    // const [preferredPronouns, setPreferredPronouns] = useState();
+    // const [phoneNumber, setPhoneNumber] = useState();
 
-    
     const [errors, setErrors] = useState({})
     
     const changeHandler = (e) => {
@@ -34,13 +30,25 @@ const EditCseUser = (props) => {
     useEffect(() => {
         axios.get(`http://localhost:8000/api/cseuser/${id}`)
             .then((res) => {
-                console.log(res.data.cseuser);
+                console.log(`line 30 res.data.cseuser : ,${res.data.cseuser}`);
                 setCseUser(res.data.cseuser);
+
+                // setFirstName(res.data.firstName)
+                // setLastName(res.data.lastName)
+                // setSlackName(res.data.slackName)
+                // setTwilioEmail(res.data.twilioEmail)
+                // setSegmentEmail(res.data.segmentEmail)
+                // SetCseTeam(res.data.cseTeam)
+                // setWorkspaceSlug(res.data.workspaceSlug)
+                // setWorkspaceId(res.data.workspaceId)
+                // setPreferredPronouns(res.data.preferredPronouns)
+                // setPhoneNumber(res.data.phoneNumber)
+                
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [])
+    }, [id])
 
     // NEED TO CHANGE
     const submitHandler = (e) => {
@@ -63,6 +71,7 @@ const EditCseUser = (props) => {
                 <div>
                     <label>First Name</label>
                     <input type="text" name="firstName" onChange={changeHandler} value={cseUser.firstName}/>
+                    {/* <input type="text" name="firstName" onChange={(e) => {setFirstName(e.target.value)}} value={cseUser.firstName}/> */}
                     {
                         errors.firstName && (<p className='text-danger'>{errors.firstName.message}</p>)
                     }
@@ -70,6 +79,7 @@ const EditCseUser = (props) => {
                 <div>
                     <label>Last Name</label>
                     <input type="text" name="lastName" onChange={changeHandler} value={cseUser.lastName}/>
+                    {/* <input type="text" name="lastName" onChange={(e) => {setLastName(e.target.value)}} value={cseUser.lastName}/> */}
                     {
                         errors.lastName && (<p className='text-danger'>{errors.lastName.message}</p>)
                     }
