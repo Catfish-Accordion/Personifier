@@ -15,17 +15,33 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [true, "Slack name is required"],
-        minlength: [4, "Slack name must be at least 4 characters long"]
+        required: [true, "Email name is required"],
+        minlength: [10, "Email name must be at least 10 characters long"]
     },
     username: {
         type: String,
-        required: [true, "Segment email is required"],
-        minlength: [10, "Segment email must be at least 10 characters long"]
+        required: [true, "Username is required"],
+        minlength: [5, "Username must be at least 10 characters long"]
     },
     phoneNumber : {
         type: String,
         required: [false, "Phone number is not required"]
+    },
+    anonymousId: {
+        type: Object,
+        required: [false]
+    },
+    userId: {
+        type: String,
+        required: [false]
+    },
+    profilePhoto : {
+        type: String,
+        required: [false]
+    },
+    traits: {
+        type: Object,
+        required: [false]
     }
 }, {timestamps:true});
  

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link, useParams} from 'react-router-dom';
+import Photo from '../Photos/Photo';
 
 const UserList = (props) => {
     const {userList, setUserList} = props;
@@ -37,10 +38,10 @@ const UserList = (props) => {
             <div className='d-flex justify-content-around flex-wrap'>
                 {userList.map((user) => (
                         <div className='userCard' key={user._id}>
-                            <h2>Name : {user.firstName} {user.lastName} ({user.preferredPronouns})</h2>
-                            <h4>Slack : {user.slackName}</h4>
-                            <h4>Twilio Email : {user.twilioEmail}</h4>
-                            <h4>Segment Email : {user.segmentEmail}</h4>
+                            <h2>Name : {user.firstName} {user.lastName}</h2>
+                            <h4>Email : {user.email}</h4>
+                            <h4>Username : {user.username}</h4>
+                            <h4>Phone Number : {user.phoneNumber}</h4>
                             <Link className='btn btn-secondary' to={`/viewUser/${user._id}`}>View User</Link>
                             <Link className='btn btn-primary' to={`/editUser/${user._id}`}>Edit</Link>
                             <button className='btn btn-danger' onClick={() => deleteHandler(user._id)}>Delete</button>

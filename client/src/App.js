@@ -19,9 +19,17 @@ import OneUser from './components/User/OneUser';
 import CreateUser from './components/User/CreateUser';
 import EditUser from './components/User/EditUser';
 
+// PROFILE IMPORTS
+import ProfilesListView from './components/Views/ProfilesList.View';
+import NewPhoto from './components/Photos/NewPhoto';
+
+// USER WORKSHOP IMPORTS
+import UserWorkshop from './components/Views/UserWorkshop'
+
 function App() {
   const [cseUserList, setCseUserList] = useState([]);
   const [userList, setUserList] = useState([]);
+
 
   return (
     <div className="App">
@@ -42,8 +50,15 @@ function App() {
           <Route path='/user/:id' element={<OneUser/>}/>
           <Route path='/viewUser/:id' element={<OneUser/>}/>
           <Route path='/editUser/:id' element={<EditUser/>}/>
+
+          <Route path='/search/profilephotos/db/' element={<NewPhoto/>}/>
+          <Route path='/search/profilephotos/search/' element={<ProfilesListView/>}/>
+          <Route path='/userworkshop/' element={<UserWorkshop/>}/>
+
         </Routes>
       </BrowserRouter>
+    
+
     </div>
   );
 }

@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  color: black;
+}
+
+@import url(https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css);
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+
+.codeblock {
+  font-family: -apple-system, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.demo {
+  font-family: "Fira Code", monospace;
+}

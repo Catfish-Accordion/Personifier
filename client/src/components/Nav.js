@@ -8,16 +8,14 @@ const Nav = () => {
         <div className='d-inline-flex justify-content-space-evenly' id='nav'>
         {/* <div  p-3 bg-secondary'> */}
             <Link to={'/'}>Catfish Accordion</Link>
-            <br/>
             <Link to={'/cseUsers/'}>CSEs</Link>
-            <br/>
-            {/* <br/> */}
             <Link to={'/createCSEUser/form'}>NEW CSE</Link>
-            <br/>
             <Link to={'/createUser/form'}>NEW User</Link>
-            <br/>
             <Link to={'/users'}>Users</Link>
-            {/* <br/>
+            <Link to={'/search/profilephotos/db/'}>ProPho DB</Link>
+            <Link to={'/search/profilephotos/search/'}>ProPho Search</Link>
+            <Link to={'/userworkshop/'}>User Workshop</Link>
+            {/* 
             <Link to={'/editCSEUser/:id'}>Edit CSE</Link> */}
             <br/><br/><br/><br/>
         </div>
